@@ -3,19 +3,18 @@ import { Segment } from 'semantic-ui-react'
 import { Editor } from '@tinymce/tinymce-react';
 
 
-
-
-
-
-
 const Textarea = () =>{
 
 const handleEditorChange = (content, editor) => {
     console.log('Content was updated:', content);
   }
 
+
     return(
         <Segment>
+            <Segment>
+                Hello
+            </Segment>
             <Editor
         //  initialValue=
          apiKey="mg5gi3ektkg3kel46eg0jdk0g436goavb72h6t0ts6h6rys4"
@@ -28,7 +27,7 @@ const handleEditorChange = (content, editor) => {
              'insertdatetime media table paste code help wordcount'
            ],
            toolbar:
-             'undo redo | formatselect | bold italic backcolor | \
+             'undo redo | formatselect | bold italic backcolor fontselect | \
              alignleft aligncenter alignright alignjustify | \
              bullist numlist outdent indent | removeformat | help'
          }}
