@@ -1,6 +1,3 @@
-.App {
-  text-align: center;
-}
 
 .App-logo {
   height: 40vmin;
@@ -35,4 +32,32 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+.App {
+  width: 90%;
+  margin: auto;
+}
+
+.navbarheader{
+  margin: 50px;
+}
+
+.title{
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  animation: titleFade 2s;
+  transition: 2s ease-in;
+}
+
+.sidebar{
+  width: 95%;
+  margin: auto;
+  margin-top: 5%;
+}
+
+@keyframes titleFade{
+  0% {opacity: 0;}
+  100% {opacity: 1;}
 }
