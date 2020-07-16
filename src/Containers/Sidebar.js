@@ -4,45 +4,50 @@ import Textarea from '../Components/Textarea'
 
 
 
-const SideBar = () =>{
+const SideBar = ({journal}) =>{
 
 
-    let [activeItem, setActiveItem] = useState('bio')
-
+    let [activeItem, setActiveItem] = useState(journal[0].title)
+    let [activeJournal, setActiveJournal] = useState(journal[0])
 
     const onClick = (e, {name}) =>{
         setActiveItem(name)
+
+        let setJournal = journal.find(journal =>{
+          return journal.title === name
+        })
+
+        setActiveJournal(setJournal)
     }
+
+
+    const journalEntries = () =>{
+      return journal.map(journal =>{
+        return <Menu.Item
+        key={journal.title}
+        name={journal.title}
+        active={activeItem === journal.title}
+        onClick={onClick}
+      />
+      })
+    }
+
 
     return(
     <Grid style={{width: '100%'}}>
         <Grid.Column width={4}>
           <div className='sidebar'>
-          <Menu fluid vertical tabular>
-            <Menu.Item
-              name='bio'
-              active={activeItem === 'bio'}
-              onClick={onClick}
-            />
-            <Menu.Item
-              name='test'
-              active={activeItem === 'test'}
-              onClick={onClick}
-            />
-            <Menu.Item
-              name='dead'
-              active={activeItem === 'dead'}
-              onClick={onClick}
-            />
+            <Menu fluid vertical tabular>
 
-            <Button content='Add' primary style={{marginTop: "30px", marginLeft: "10px", backgroundColor: "#7bcc81" }} />
-            <Button content='Remove' secondary style={{marginLeft: "20px", backgroundColor: "#ff6666"}}/>
+              {journalEntries()}
+              <Button content='Add' primary style={{marginTop: "30px", marginLeft: "10px", backgroundColor: "#7bcc81" }} />
+              <Button content='Remove' secondary style={{marginLeft: "20px", backgroundColor: "#ff6666"}}/>
+            </Menu>
 
-          </Menu>
           </div>
         </Grid.Column>
         <Grid.Column stretched width={12}>
-          <Textarea/>
+          <Textarea journal={activeJournal}/>
         </Grid.Column>
       </Grid>
     )

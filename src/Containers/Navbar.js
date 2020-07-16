@@ -5,7 +5,7 @@ import React, {useState} from 'react'
 const Navbar = () =>{
 
 
-    let [active, setActive] = useState('')
+    let [active, setActive] = useState('Journals')
 
 
 

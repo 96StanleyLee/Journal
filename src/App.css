@@ -47,12 +47,12 @@
 .title{
   font-family: 'Playfair Display', serif;
   text-align: center;
-  animation: titleFade 2s;
+  animation: titleFade infinite 2s;
   transition: 2s ease-in;
 }
 
 .sidebar{
-  width: 95%;
+  width: 100%;
   margin: auto;
   margin-top: 5%;
   overflow-y:scroll;
@@ -67,5 +67,7 @@
 
 @keyframes titleFade{
   0% {opacity: 0;}
-  100% {opacity: 1;}
+  50% {opacity: 1;}
+  100% {opacity: 0;}
+ 
 }
