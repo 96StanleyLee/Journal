@@ -1,34 +1,35 @@
 import React, {useState, useEffect} from 'react'
-import { Segment, Button } from 'semantic-ui-react'
+import { Segment } from 'semantic-ui-react'
 import { Editor } from '@tinymce/tinymce-react';
 
 
 const Textarea = ({journal}) =>{
 
 
+let [initialValue, setInitialValue] = useState(journal.entry)
 
 const handleEditorChange = (content, editor) => {
     console.log('Content was updated:', content);
   }
 
+  useEffect(()=>{
+      setInitialValue(journal.entry)
+
+  },[journal.entry])
+
  
- 
+  console.log(initialValue)
 
     return(
-        <Segment style={{paddingRight: '0px'}}>
-          {!journal ?   
-          <Segment style={{width: '90%'}}/>
-            :
-          <Segment style={{width: '90%'}} dangerouslySetInnerHTML={{ __html: journal.entry }}/>}
-              
-            <button></button>
+        <Segment>
+            <Segment  dangerouslySetInnerHTML={{ __html: journal.entry }}>
+            
+            </Segment>
             <Editor
-        //  initialValue= {journal.entry}
+         initialValue= {initialValue}
          apiKey="mg5gi3ektkg3kel46eg0jdk0g436goavb72h6t0ts6h6rys4"
          init={{
-           initialvalue: 'hi',
            height: 300,
-           width: '90%',
            menubar: false,
            plugins: [
              'advlist autolink lists link image charmap print preview anchor',
