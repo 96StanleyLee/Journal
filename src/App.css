@@ -49,6 +49,7 @@
   text-align: center;
   animation: titleFade infinite 2s;
   transition: 2s ease-in;
+  
 }
 
 .sidebar{
@@ -66,8 +67,8 @@
 
 
 @keyframes titleFade{
-  0% {opacity: 0;}
+  0% {opacity: 0.5;}
   50% {opacity: 1;}
-  100% {opacity: 0;}
+  100% {opacity: 0.5;}
  
 }
