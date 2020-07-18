@@ -4,7 +4,7 @@ import { Grid, Menu, Button } from 'semantic-ui-react'
 
 
 
-const SideBar = ({journal, remove, onClick, activeJournal}) =>{
+const SideBar = ({journal, remove, onClick, activeJournal, add}) =>{
 
 
 
@@ -12,18 +12,17 @@ const SideBar = ({journal, remove, onClick, activeJournal}) =>{
       if(journal.length !== 0){
         return journal.map(journal =>{
           return <Menu.Item
-          key={journal.title}
+          key={journal.id}
           name={journal.title}
-          active={activeJournal.title === journal.title}
+          id={journal.id}
+          active={activeJournal.id === journal.id}
           onClick={onClick}
           />
         })
       }
     }
 
-    console.log(journal)
-
-
+  
     return(
       <>
         <Grid.Column width={4}>
@@ -31,7 +30,7 @@ const SideBar = ({journal, remove, onClick, activeJournal}) =>{
             <Menu fluid vertical tabular>
 
               {journalEntries()}
-              <Button content='Add' primary style={{marginTop: "30px", marginLeft: "10px", backgroundColor: "#7bcc81" }} />
+              <Button content='Add' onClick={()=>add()} primary style={{marginTop: "30px", marginLeft: "10px", backgroundColor: "#7bcc81" }} />
               <Button  onClick={()=>remove(activeJournal)} content='Remove' secondary style={{marginLeft: "20px", backgroundColor: "#ff6666"}}/>
             </Menu>
 

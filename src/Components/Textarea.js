@@ -20,8 +20,7 @@ const handleEditorChange = (content, editor) => {
           <Segment style={{width: '90%'}}/>
             :
           <Segment style={{width: '90%'}} dangerouslySetInnerHTML={{ __html: journal.entry }}/>}
-              
-            <button></button>
+            <Button basic color='green' className='edit' style={{marginBottom: '10px'}}>Edit Title</Button>
             <Editor
          value= {!journal? '': journal.entry}
          apiKey="mg5gi3ektkg3kel46eg0jdk0g436goavb72h6t0ts6h6rys4"

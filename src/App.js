@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Navbar from './Containers/Navbar'
 import Sidebar from './Containers/Sidebar'
 import './App.css';
@@ -11,9 +11,9 @@ function App() {
 
 
   const journalEntriesObj = [
-    {title: 'bio', entry: 'This is my biography'},   
-    {title: 'test', entry: "This is a test journal"},
-    {title: 'dead', entry: `<strong>IM DED</strong>`}]
+    {title: 'bio', entry: 'This is my biography', id:1},   
+    {title: 'test', entry: "This is a test journal", id:2},
+    {title: 'dead', entry: `<strong>IM DED</strong>`, id:3}]
 
 
   let [journalEntries, setJournalEntries] = useState(journalEntriesObj)
@@ -21,11 +21,10 @@ function App() {
 
 
 
-  const onClick = (e, {name}) =>{
-
-
+  const onClick = (e, {id}) =>{
+    console.log(id)
     let setJournal = journalEntries.find(journal =>{
-      return journal.title === name
+      return journal.id === id
     })
 
     setActiveJournal(setJournal)
@@ -40,9 +39,18 @@ function App() {
     }
   }
 
-  const onClickAdd = () =>{
-
+  const onClickAdd = async () =>{
+    let id = journalEntries[journalEntries.length-1].id + 1
+    console.log(id)
+    let newJournalEntry = {title: 'New', entry: 'New', id:id}
+    let newJournalEntries = [...journalEntries, newJournalEntry]
+    setJournalEntries(newJournalEntries)
   }
+
+  useEffect(()=>{
+    setActiveJournal(journalEntries[journalEntries.length-1])
+  },[journalEntries])
+
     
   return (
     <>
@@ -52,7 +60,7 @@ function App() {
     </header>
     <h1 className='title'> Journal Test </h1>    
     <Grid style={{width: '100%'}}>
-      <Sidebar journal = {journalEntries} active={onClick} remove={onClickDelete} activeJournal={activeJournal} onClick={onClick}></Sidebar>
+      <Sidebar journal = {journalEntries} active={onClick} remove={onClickDelete} activeJournal={activeJournal} onClick={onClick} add={onClickAdd}></Sidebar>
       <Grid.Column stretched width={12}>
           <Textarea journal={activeJournal}/>
       </Grid.Column>
