@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { Segment, Button } from 'semantic-ui-react'
+import { Segment, Button, Input } from 'semantic-ui-react'
 import { Editor } from '@tinymce/tinymce-react';
 
 
@@ -17,7 +17,7 @@ const Textarea = ({journal, editTitle}) =>{
   },[journal])
 
   const help = (e) =>{
-    setTitle(e.target.innerText)
+   setTitle(e.target.value)
   }
 
  
@@ -30,10 +30,11 @@ const Textarea = ({journal, editTitle}) =>{
             :
           // <Segment style={{width: '90%'}} dangerouslySetInnerHTML={{ __html: journal.entry }}/>}
           <Segment style={{width: '90%'}}>
-            <h1 onKeyDown={(e)=> help(e)} contentEditable={true}>{title}</h1>
+            <h1>{journal.title}</h1>
+            
             </Segment>
             }
-
+            Title Edit: <Input onChange={(e)=>help(e)}></Input>
             <p> Last Edited: <strong>{journal.date}</strong></p>
         
           
