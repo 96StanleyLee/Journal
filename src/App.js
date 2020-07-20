@@ -47,11 +47,26 @@ function App() {
     setJournalEntries(newJournalEntries)
   }
 
+  const onClickEditTitle = (journal, title) =>{
+    let journals = [...journalEntries]
+
+    let newJournals = journals.map(journals =>{
+      if(journals === journal){
+        return {...journals, title: title}
+      }
+      return journals
+    })
+    
+    setJournalEntries(newJournals)
+
+  }
+
   useEffect(()=>{
     setActiveJournal(journalEntries[journalEntries.length-1])
   },[journalEntries])
 
-    
+
+    console.log(journalEntries)
   return (
     <>
     <div className = 'App'>
@@ -62,7 +77,7 @@ function App() {
     <Grid style={{width: '100%'}}>
       <Sidebar journal = {journalEntries} active={onClick} remove={onClickDelete} activeJournal={activeJournal} onClick={onClick} add={onClickAdd}></Sidebar>
       <Grid.Column stretched width={12}>
-          <Textarea journal={activeJournal}/>
+          <Textarea journal={activeJournal} editTitle={onClickEditTitle}/>
       </Grid.Column>
     </Grid>
 
