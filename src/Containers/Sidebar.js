@@ -6,14 +6,14 @@ import { Grid, Menu, Button } from 'semantic-ui-react'
 
 const SideBar = ({journal, remove, onClick, activeJournal, add}) =>{
 
-
+   
 
     const journalEntries = () =>{
       if(journal.length !== 0){
         return journal.map(journal =>{
           return <Menu.Item
           key={journal.id}
-          name={journal.title}
+          name={`${journal.title}`}
           id={journal.id}
           active={activeJournal.id === journal.id}
           onClick={onClick}

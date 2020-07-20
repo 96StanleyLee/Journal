@@ -11,9 +11,9 @@ function App() {
 
 
   const journalEntriesObj = [
-    {title: 'bio', entry: 'This is my biography', id:1},   
-    {title: 'test', entry: "This is a test journal", id:2},
-    {title: 'dead', entry: `<strong>IM DED</strong>`, id:3}]
+    {title: 'bio', entry: 'This is my biography', date:"7/15/2020", id:1},   
+    {title: 'test', entry: "This is a test journal", date:"7/17/2020", id:2},
+    {title: 'dead', entry: `<strong>IM DED</strong>`, date:"7/19/2020", id:3}]
 
 
   let [journalEntries, setJournalEntries] = useState(journalEntriesObj)
@@ -41,8 +41,9 @@ function App() {
 
   const onClickAdd = async () =>{
     let id = journalEntries[journalEntries.length-1].id + 1
-    console.log(id)
-    let newJournalEntry = {title: 'New', entry: 'New', id:id}
+    let date = new Date()
+    date = date.toLocaleDateString()
+    let newJournalEntry = {title: 'New', entry: 'New', date: date, id:id}
     let newJournalEntries = [...journalEntries, newJournalEntry]
     setJournalEntries(newJournalEntries)
   }

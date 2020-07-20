@@ -33,6 +33,11 @@ const Textarea = ({journal, editTitle}) =>{
             <h1 onKeyDown={(e)=> help(e)} contentEditable={true}>{title}</h1>
             </Segment>
             }
+
+            <p> Last Edited: <strong>{journal.date}</strong></p>
+        
+          
+
             <Button basic color='green' onClick={()=>editTitle(journal, title)}  className='edit' style={{marginBottom: '10px'}}>Edit Title</Button>
             <Editor
          value= {!journal? '': journal.entry}
