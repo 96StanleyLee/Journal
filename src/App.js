@@ -57,10 +57,33 @@ function App() {
       }
       return journals
     })
-    
     setJournalEntries(newJournals)
-
   }
+
+
+
+  const onClickSaveJournal = (journal, content) =>{
+    let entries = [...journalEntries]
+
+    let editedJournal = {...journal}
+
+    entries = entries.filter(journals =>{
+      return journals !== journal
+    })
+   
+  
+    
+    editedJournal.entry = content 
+    
+    entries.push(editedJournal)
+
+    setJournalEntries(entries)
+    
+  
+  
+    
+  }
+
 
   useEffect(()=>{
     setActiveJournal(journalEntries[journalEntries.length-1])
@@ -76,9 +99,9 @@ function App() {
     </header>
     <h1 className='title'> Journal Test </h1>    
     <Grid style={{width: '100%'}}>
-      <Sidebar journal = {journalEntries} active={onClick} remove={onClickDelete} activeJournal={activeJournal} onClick={onClick} add={onClickAdd}></Sidebar>
+      <Sidebar journal = {journalEntries} active={onClick} remove={onClickDelete} activeJournal={activeJournal} onClick={onClick} add={onClickAdd} ></Sidebar>
       <Grid.Column stretched width={12}>
-          <Textarea journal={activeJournal} editTitle={onClickEditTitle}/>
+          <Textarea journal={activeJournal} editTitle={onClickEditTitle} save={onClickSaveJournal}/>
       </Grid.Column>
     </Grid>
 

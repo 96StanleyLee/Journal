@@ -3,17 +3,20 @@ import { Segment, Button, Input } from 'semantic-ui-react'
 import { Editor } from '@tinymce/tinymce-react';
 
 
-const Textarea = ({journal, editTitle}) =>{
+const Textarea = ({journal, editTitle, save}) =>{
 
 
   let [title, setTitle] = useState('')
+  let [content, setContent] = useState('')
 
   const handleEditorChange = (content, editor) => {
       console.log('Content was updated:', content);
+      setContent(content)
     }
 
   useEffect(()=>{
     setTitle(journal.title)
+    setContent(journal.entry)
   },[journal])
 
   const help = (e) =>{
@@ -24,6 +27,7 @@ const Textarea = ({journal, editTitle}) =>{
  
 
     return(
+      <>
         <Segment style={{paddingRight: '0px'}}>
           {!journal ?   
           <Segment style={{width: '90%'}}/>
@@ -60,6 +64,8 @@ const Textarea = ({journal, editTitle}) =>{
          onEditorChange={handleEditorChange}
        />
         </Segment>
+        <Button  onClick={()=>save(journal, content)} style={{width: '120px'}} primary> Save</Button>
+        </>
     )
 
 
