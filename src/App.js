@@ -90,7 +90,6 @@ function App() {
   },[journalEntries])
 
 
-    console.log(journalEntries)
   return (
     <>
     <div className = 'App'>

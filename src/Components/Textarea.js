@@ -8,6 +8,7 @@ const Textarea = ({journal, editTitle, save}) =>{
 
   let [title, setTitle] = useState('')
   let [content, setContent] = useState('')
+  
 
   const handleEditorChange = (content, editor) => {
       console.log('Content was updated:', content);
@@ -23,8 +24,14 @@ const Textarea = ({journal, editTitle, save}) =>{
    setTitle(e.target.value)
   }
 
+  const work = (journal, title) =>{
+    editTitle(journal, title)
+    console.log(title)
+    setTitle('')
+    console.log(title)
+  }
  
- 
+
 
     return(
       <>
@@ -41,9 +48,7 @@ const Textarea = ({journal, editTitle, save}) =>{
             Title Edit: <Input onChange={(e)=>help(e)}></Input>
             <p> Last Edited: <strong>{journal.date}</strong></p>
         
-          
-
-            <Button basic color='green' onClick={()=>editTitle(journal, title)}  className='edit' style={{marginBottom: '10px'}}>Edit Title</Button>
+            <Button basic color='green' onClick={()=>work(journal, title)}  className='edit' style={{marginBottom: '10px'}}>Edit Title</Button>
             <Editor
          value= {!journal? '': journal.entry}
          apiKey="mg5gi3ektkg3kel46eg0jdk0g436goavb72h6t0ts6h6rys4"

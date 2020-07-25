@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { Grid, Menu, Button } from 'semantic-ui-react'
 
 
@@ -6,7 +6,7 @@ import { Grid, Menu, Button } from 'semantic-ui-react'
 
 const SideBar = ({journal, remove, onClick, activeJournal, add}) =>{
 
-   
+
 
     const journalEntries = () =>{
       if(journal.length !== 0){
