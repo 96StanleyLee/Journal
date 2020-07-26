@@ -86,7 +86,9 @@ function App() {
 
 
   useEffect(()=>{
-    setActiveJournal(journalEntries[journalEntries.length-1])
+    console.log(activeJournal.id)
+    let id = activeJournal.id - 1
+    setActiveJournal(journalEntries[id])
   },[journalEntries])
 
 

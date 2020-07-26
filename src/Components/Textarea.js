@@ -6,8 +6,8 @@ import { Editor } from '@tinymce/tinymce-react';
 const Textarea = ({journal, editTitle, save}) =>{
 
 
-  let [title, setTitle] = useState('')
   let [content, setContent] = useState('')
+  let [editTitleState, setEditTitleState] = useState('')
   
 
   const handleEditorChange = (content, editor) => {
@@ -16,20 +16,16 @@ const Textarea = ({journal, editTitle, save}) =>{
     }
 
   useEffect(()=>{
-    setTitle(journal.title)
     setContent(journal.entry)
   },[journal])
 
-  const help = (e) =>{
-   setTitle(e.target.value)
-  }
-
   const work = (journal, title) =>{
     editTitle(journal, title)
-    console.log(title)
-    setTitle('')
-    console.log(title)
+    setEditTitleState('')
   }
+
+
+  console.log(journal)
  
 
 
@@ -45,10 +41,10 @@ const Textarea = ({journal, editTitle, save}) =>{
             
             </Segment>
             }
-            Title Edit: <Input onChange={(e)=>help(e)}></Input>
+            Title Edit: <Input value={editTitleState} onChange={(e)=>setEditTitleState(e.target.value)}></Input>
             <p> Last Edited: <strong>{journal.date}</strong></p>
         
-            <Button basic color='green' onClick={()=>work(journal, title)}  className='edit' style={{marginBottom: '10px'}}>Edit Title</Button>
+            <Button basic color='green' onClick={()=>work(journal, editTitleState)}  className='edit' style={{marginBottom: '10px'}}>Edit Title</Button>
             <Editor
          value= {!journal? '': journal.entry}
          apiKey="mg5gi3ektkg3kel46eg0jdk0g436goavb72h6t0ts6h6rys4"
