@@ -1,10 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import Navbar from './Containers/Navbar'
-import Sidebar from './Containers/Sidebar'
+import JournalEntry from './Containers/JournalEntry'
 import './App.css';
-import Textarea from './Components/Textarea'
-import { Grid} from 'semantic-ui-react'
-
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 function App() {
 
@@ -98,14 +101,11 @@ function App() {
     <header className='navbarheader'>
       <Navbar/>
     </header>
-    <h1 className='title'> Journal Test </h1>    
-    <Grid style={{width: '100%'}}>
-      <Sidebar journal = {journalEntries} active={onClick} remove={onClickDelete} activeJournal={activeJournal} onClick={onClick} add={onClickAdd} ></Sidebar>
-      <Grid.Column stretched width={12}>
-          <Textarea journal={activeJournal} editTitle={onClickEditTitle} save={onClickSaveJournal}/>
-      </Grid.Column>
-    </Grid>
-
+    <Router>
+      <Route path='/journals'>
+      <JournalEntry journalEntries = {journalEntries} onClick={onClick} onClickDelete={onClickDelete} activeJournal={activeJournal} onClickEditTitle={onClickEditTitle} onClickSaveJournal={onClickSaveJournal}  />
+      </Route>
+    </Router>
     </div>
     </>
   );
