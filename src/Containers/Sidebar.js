@@ -30,8 +30,8 @@ const SideBar = ({journal, remove, onClick, activeJournal, add}) =>{
             <Menu fluid vertical tabular>
 
               {journalEntries()}
-              <Button content='Add' onClick={()=>add()} primary style={{marginTop: "30px", marginLeft: "10px", backgroundColor: "#7bcc81" }} />
-              <Button  onClick={()=>remove(activeJournal)} content='Remove' secondary style={{marginLeft: "20px", backgroundColor: "#ff6666"}}/>
+              <Button content='Add' onClick={()=>add()} primary style={{marginTop: "30px", marginLeft: "1em", backgroundColor: "#7bcc81" }} />
+              <Button  onClick={()=>remove(activeJournal)} content='Remove' secondary style={{marginLeft: "1em", backgroundColor: "#ff6666"}}/>
             </Menu>
 
           </div>

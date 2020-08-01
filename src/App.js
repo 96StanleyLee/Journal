@@ -104,7 +104,7 @@ function App() {
     </header>
     <Router>
       <Route path='/journals'>
-      <JournalEntry journalEntries = {journalEntries} onClick={onClick} onClickDelete={onClickDelete} activeJournal={activeJournal} onClickEditTitle={onClickEditTitle} onClickSaveJournal={onClickSaveJournal}  />
+      <JournalEntry journalEntries = {journalEntries} onClick={onClick} onClickAdd={onClickAdd} onClickDelete={onClickDelete} activeJournal={activeJournal} onClickEditTitle={onClickEditTitle} onClickSaveJournal={onClickSaveJournal}  />
       </Route>
       <Route path = '/register'>
         <SignInPage state={'Register'}/>

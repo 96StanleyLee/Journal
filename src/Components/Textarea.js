@@ -8,6 +8,7 @@ const Textarea = ({journal, editTitle, save}) =>{
 
   let [content, setContent] = useState('')
   let [editTitleState, setEditTitleState] = useState('')
+  let [editState, setEditState] = useState(false)
   
 
   const handleEditorChange = (content, editor) => {
@@ -25,7 +26,6 @@ const Textarea = ({journal, editTitle, save}) =>{
   }
 
 
-  console.log(journal)
  
 
 
