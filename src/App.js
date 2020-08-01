@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Navbar from './Containers/Navbar'
 import JournalEntry from './Containers/JournalEntry'
+import SignInPage from './Containers/SignInPage'
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -104,6 +105,12 @@ function App() {
     <Router>
       <Route path='/journals'>
       <JournalEntry journalEntries = {journalEntries} onClick={onClick} onClickDelete={onClickDelete} activeJournal={activeJournal} onClickEditTitle={onClickEditTitle} onClickSaveJournal={onClickSaveJournal}  />
+      </Route>
+      <Route path = '/register'>
+        <SignInPage state={'Register'}/>
+      </Route>
+      <Route path = '/login'>
+        <SignInPage state={'Login'}/>
       </Route>
     </Router>
     </div>
