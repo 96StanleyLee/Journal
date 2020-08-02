@@ -17,7 +17,7 @@ const SignInPage = ({state}) =>{
         <br></br>
         <Input style={{display: 'inline-block'}} placeholder='Password'></Input>
         <br></br>
-        <Button primary style={{marginTop: '1em'}}> Submit</Button>
+        <Button primary style={{marginTop: '1em'}}> {state}</Button>
         </div>
         </>
     )

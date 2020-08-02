@@ -68,9 +68,7 @@ function App() {
 
   const onClickSaveJournal = (journal, content) =>{
     let entries = [...journalEntries]
-
     let editedJournal = {...journal}
-
     entries = entries.filter(journals =>{
       return journals !== journal
     })
@@ -78,9 +76,7 @@ function App() {
   
     
     editedJournal.entry = content 
-    
     entries.push(editedJournal)
-
     setJournalEntries(entries)
     
   
@@ -90,7 +86,6 @@ function App() {
 
 
   useEffect(()=>{
-    console.log(activeJournal.id)
     let id = activeJournal.id - 1
     setActiveJournal(journalEntries[id])
   },[journalEntries])
@@ -99,10 +94,11 @@ function App() {
   return (
     <>
     <div className = 'App'>
+    <Router>
     <header className='navbarheader'>
       <Navbar/>
     </header>
-    <Router>
+      <Switch>
       <Route path='/journals'>
       <JournalEntry journalEntries = {journalEntries} onClick={onClick} onClickAdd={onClickAdd} onClickDelete={onClickDelete} activeJournal={activeJournal} onClickEditTitle={onClickEditTitle} onClickSaveJournal={onClickSaveJournal}  />
       </Route>
@@ -112,6 +108,7 @@ function App() {
       <Route path = '/login'>
         <SignInPage state={'Login'}/>
       </Route>
+      </Switch>
     </Router>
     </div>
     </>
