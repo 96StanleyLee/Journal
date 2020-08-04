@@ -99,7 +99,7 @@ function App() {
       <Navbar/>
     </header>
       <Switch>
-      <Route path='/journals'>
+      <Route path={['/journals','/']}>
       <JournalEntry journalEntries = {journalEntries} onClick={onClick} onClickAdd={onClickAdd} onClickDelete={onClickDelete} activeJournal={activeJournal} onClickEditTitle={onClickEditTitle} onClickSaveJournal={onClickSaveJournal}  />
       </Route>
       <Route path = '/register'>
