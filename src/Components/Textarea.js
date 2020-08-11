@@ -33,18 +33,29 @@ const Textarea = ({journal, editTitle, save}) =>{
       <>
         <Segment style={{paddingRight: '0px'}}>
           {!journal ?   
+          
           <Segment style={{width: '90%'}}/>
             :
           // <Segment style={{width: '90%'}} dangerouslySetInnerHTML={{ __html: journal.entry }}/>}
+          <>
           <Segment style={{width: '90%'}}>
             <h1>{journal.title}</h1>
             
             </Segment>
+
+          <Segment style={{width: '90%'}} dangerouslySetInnerHTML={{ __html: journal.entry }}>
+            
+            </Segment>
+            </>
             }
+            <Button basic color='green' onClick={()=>setEditState(!editState)}  className='edit' style={{marginBottom: '10px'}}>Edit Journal</Button>
+            <br></br>
             Title Edit: <Input value={editTitleState} onChange={(e)=>setEditTitleState(e.target.value)}></Input>
             <p> Last Edited: <strong>{journal.date}</strong></p>
         
             <Button basic color='green' onClick={()=>work(journal, editTitleState)}  className='edit' style={{marginBottom: '10px'}}>Edit Title</Button>
+            {editState? 
+            <>
             <Editor
          value= {!journal? '': journal.entry}
          apiKey="mg5gi3ektkg3kel46eg0jdk0g436goavb72h6t0ts6h6rys4"
@@ -64,8 +75,12 @@ const Textarea = ({journal, editTitle, save}) =>{
          }}
          onEditorChange={handleEditorChange}
        />
+       <br></br>
+      <Button  onClick={()=>save(journal, content)} style={{width: '120px'}} primary> Save</Button> 
+      </>
+      : null
+        }
         </Segment>
-        <Button  onClick={()=>save(journal, content)} style={{width: '120px'}} primary> Save</Button>
         </>
     )
 
